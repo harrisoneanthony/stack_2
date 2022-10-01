@@ -84,7 +84,9 @@ dojo = {
 }
 
 def print_info(dict):
-    for i in dict:
-        print(len(i),i)
+    for key,val in dict.items():
+        print(len(val),key)
+        for i in range(len(val)):
+            print(val[i])
 
 print_info(dojo)
