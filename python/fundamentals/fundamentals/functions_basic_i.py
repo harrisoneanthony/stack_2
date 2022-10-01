@@ -111,7 +111,7 @@
 # print(b)
 
 
-# #14
+# #14 defines foo(), then defines bar(). prints foo which is 1, bar(),2 or 1,3,2
 # def foo():
 #     print(1)
 #     bar()
@@ -121,14 +121,14 @@
 # foo()
 
 
-# #15
-# def foo():
-#     print(1)
-#     x = bar()
-#     print(x)
-#     return 10
-# def bar():
-#     print(3)
-#     return 5
-# y = foo()
-# print(y)
+# #15 1,3,5,10
+def foo():
+    print(1)
+    x = bar()
+    print(x)
+    return 10
+def bar():
+    print(3)
+    return 5
+y = foo()
+print(y)
