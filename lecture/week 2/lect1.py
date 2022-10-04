@@ -23,6 +23,9 @@ games = {
     "nintendo_64": "goldeneye",
 }
 
+games["gameboy"] = "pokemon yellow"
+games.update({"gameboy":"links awakening"})
+
 # .keys()
 print(games.keys())
 for key in games.keys():
@@ -36,3 +39,10 @@ for val in games.values():
 #  .items()
 print(games.items())
     # prints tuples in a list
+for key, val in games.items():
+    print(key, ":", val)
+
+for key, val in games.items():
+    if val == "Halo":
+        games[key] = "gears of war"
+print(games)
