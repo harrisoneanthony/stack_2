@@ -51,6 +51,7 @@ harrison.display_info()
 # they are, print "User already a member." and return False, otherwise return True.
 
 harrison.enroll()
+
 # Add logic in the spend points method to be sure they have enough points to spend 
 # that amount and handle appropriately.
 
