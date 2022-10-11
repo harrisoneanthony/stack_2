@@ -34,29 +34,20 @@ class User:
             print("insufficent funds")
 
 
-harrison = User("Harrison", "Anthony", "harrisoneanthony@gmail.com", 32, False, 0)
+harrison = User("Harrison", "Anthony", "harrisoneanthony@gmail.com", 32, True, 100)
+hayley = User("Hayley", "Finik", "hfinik@nobull.com", 26, False, 0)
+bella = User("Bella", "Alzendez", "bella.@dogcom", 3, False, 0)
 
-# display_info(self) - Have this method print all of the users' details on separate lines.
+harrison.spend_points(50)
 harrison.display_info()
 
-# enroll(self) - Have this method change the user's member status to True and 
-#     set their gold card points to 200.
-harrison.enroll()
+hayley.enroll()
+hayley.spend_points(80)
+hayley.display_info()
+
 harrison.display_info()
-
-# spend_points(self, amount) - have this method decrease the user's points by 
-#     the amount specified.
-harrison.spend_points(100)
-harrison.display_info()
-
-# Ninja Bonuses:
-
-# Add logic in the enroll method to check if they are a member already, and if 
-# they are, print "User already a member." and return False, otherwise return True.
+hayley.display_info()
+bella.display_info()
 
 harrison.enroll()
-
-# Add logic in the spend points method to be sure they have enough points to spend 
-# that amount and handle appropriately.
-
-harrison.spend_points(201)
+bella.spend_points(10)
