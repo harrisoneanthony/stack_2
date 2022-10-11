@@ -28,7 +28,11 @@ class User:
             return False
 
     def spend_points(self, amount):
-        self.gold_card_points -= amount
+        if self.gold_card_points > amount:
+            self.gold_card_points -= amount
+        else:
+            print("insufficent funds")
+
 
 harrison = User("Harrison", "Anthony", "harrisoneanthony@gmail.com", 32, False, 0)
 
@@ -55,4 +59,4 @@ harrison.enroll()
 # Add logic in the spend points method to be sure they have enough points to spend 
 # that amount and handle appropriately.
 
-
+harrison.spend_points(201)
