@@ -38,7 +38,7 @@ class User:
         self.last_name = last_name
         self.e_mail = e_mail
         self.age = age
-        self.account = BankAccount(0.02,0)
+        self.account = BankAccount(0.02, 0)
 
     def display_info(self):
         print(self.first_name)
