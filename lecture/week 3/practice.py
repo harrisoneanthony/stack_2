@@ -15,11 +15,20 @@ class Robot:
             self.defense = 50
 
     def attack(self, target):
-        if random.random() * 100 > target.speed % 20:
-
+        if math.floor(random.random() * 21) > target.speed:
+            if target.defense == 100:
+                target.health -= self.weapon_damage / 2
+            else:
+                target.health -= self.weapon_damage
+            print("hit", target.health)
+        else:
+            print("missed!")
 
 gumby = Robot("Gumby", "katana", 9, False, 17,)
 Mr_Roboto = Robot("Mr Roboto", "Hammer", 10, True, 5)
 
 print(gumby.defense)
 print(Mr_Roboto.defense)
+
+gumby.attack(Mr_Roboto)
+Mr_Roboto.attack(gumby)

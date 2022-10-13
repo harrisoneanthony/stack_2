@@ -2,7 +2,7 @@
 
 class BankAccount:
 
-    def __innit__(self, int_rate, balance):
+    def __init__(self, int_rate, balance):
         self.int_rate = int_rate
         self.balance = balance
 
@@ -19,14 +19,14 @@ class BankAccount:
             self.balance -= amount
             return self
 
-    def display_account_info(self):
-        print(f"Balance: ${self.balance}")
-        return self
+    # def display_account_info(self):
+    #     print(f"Balance: ${self.balance}")
+    #     return self
 
-    def yield_interest(self):
-        if self.balance > 0:
-            self.balance = self.balance * 1.01
-            return self
+    # def yield_interest(self):
+    #     if self.balance > 0:
+    #         self.balance = self.balance * 1.01
+    #         return self
 
 
 
@@ -48,11 +48,17 @@ class User:
         print(self.account.balance)
         return self
         
+    def make_deposit(self, amount):
+        self.account.deposit(amount)
+        return self
 
+    def make_withdrawl(self, amount):
+        self.account.withdrawl(amount)
+        return self
 
 harrison = User("Harrison", "Anthony", "harrisoneanthony@gmail.com", 32)
 hayley = User("Hayley", "Finik", "hfinik@nobull.com", 26)
 bella = User("Bella", "Alzendez", "bella.@dog.com", 3)
 
 
-harrison.display_info()
+harrison.make_deposit(100).display_info()
