@@ -29,10 +29,10 @@ class BankAccount:
         self.display_user_balance()
         other_user.display_user_balance()
 
-    # def yield_interest(self):
-    #     if self.balance > 0:
-    #         self.balance = self.balance * 1.01
-    #         return self
+    def yield_interest(self):
+        if self.balance > 0:
+            self.balance = self.balance 
+            return self
 
 
 
@@ -44,7 +44,7 @@ class User:
         self.last_name = last_name
         self.e_mail = e_mail
         self.age = age
-        self.checking_account = BankAccount(0.02, 0)
+        self.checking_account = BankAccount(0, 0)
         self.savings_account = BankAccount(0.02, 0)
 
     def display_info(self):
@@ -84,6 +84,7 @@ class User:
     def transfer_money_from_savings(self, amount, user):
         self.savings_account.transfer_money(amount, user)
         return self
+
 
 
 harrison = User("Harrison", "Anthony", "harrisoneanthony@gmail.com", 32)
