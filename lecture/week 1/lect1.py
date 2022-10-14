@@ -53,17 +53,17 @@
 
 
 #  Building functions
-# weather = input("what's the weather like?")
+weather = input("what's the weather like?")
 
-# def weather_teller(weather):
-#     if weather == "rainy":
-#         print("Bring an umbrella!!!")
-#     elif weather == "sunny":
-#         print("Wear some shorts!!!")
-#     else:
-#         print(f"Prepare for {weather}!!")
+def weather_teller(weather):
+    if weather == "rainy":
+        print("Bring an umbrella!!!")
+    elif weather == "sunny":
+        print("Wear some shorts!!!")
+    else:
+        print(f"Prepare for {weather}!!")
 
-# weather_teller(input("what's the weather like?")) # then type "rainy", "sunny", or something else in terminal to get that response printed
+weather_teller(input("what's the weather like?")) # then type "rainy", "sunny", or something else in terminal to get that response printed
 
 # for loops
 # for i in range(6):

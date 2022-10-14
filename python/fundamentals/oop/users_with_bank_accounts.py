@@ -19,9 +19,15 @@ class BankAccount:
             self.balance -= amount
             return self
 
-    # def display_account_info(self):
-    #     print(f"Balance: ${self.balance}")
-    #     return self
+    def display_account_info(self):
+        print(f"Balance: ${self.balance}")
+        return self
+
+    def transfer_money(self, amount, other_user):
+        self.balance -= amount
+        other_user.balance += amount
+        self.display_user_balance()
+        other_user.display_user_balance()
 
     # def yield_interest(self):
     #     if self.balance > 0:
@@ -38,27 +44,51 @@ class User:
         self.last_name = last_name
         self.e_mail = e_mail
         self.age = age
-        self.account = BankAccount(0.02, 0)
+        self.checking_account = BankAccount(0.02, 0)
+        self.savings_account = BankAccount(0.02, 0)
 
     def display_info(self):
         print(self.first_name)
         print(self.last_name)
         print(self.e_mail)
         print(self.age)
-        print(self.account.balance)
+        print(self.checking_account.balance)
+        print(self.savings_account.balance)
         return self
         
-    def make_deposit(self, amount):
-        self.account.deposit(amount)
+    def make_deposit_to_checking(self, amount):
+        self.checking_account.deposit(amount)
+        return self
+    
+    def make_deposit_to_savings(self, amount):
+        self.savings_account.deposit(amount)
         return self
 
-    def make_withdrawl(self, amount):
-        self.account.withdrawl(amount)
+    def make_withdrawl_from_checking(self, amount):
+        self.checking_account.withdraw(amount)
         return self
+    
+    def make_withdrawl_from_savings(self, amount):
+        self.savings_account.withdraw(amount)
+        return self
+
+    def display_user_balance(self):
+        print(f"Checking Account: ${self.checking_account.balance}")
+        print(f"Savings Account: ${self.savings_account.balance}")
+        return self
+
+    def transfer_money_from_checking(self, amount, user):
+        self.checking_account.transfer_money(amount, user)
+        return self
+    
+    def transfer_money_from_savings(self, amount, user):
+        self.savings_account.transfer_money(amount, user)
+        return self
+
 
 harrison = User("Harrison", "Anthony", "harrisoneanthony@gmail.com", 32)
 hayley = User("Hayley", "Finik", "hfinik@nobull.com", 26)
 bella = User("Bella", "Alzendez", "bella.@dog.com", 3)
 
 
-harrison.make_deposit(100).display_info()
+harrison.make_deposit_to_checking(100).make_deposit_to_savings(100).display_user_balance().transfer_money_from_checking(100,bella)
