@@ -121,4 +121,4 @@ for player_dict in players:
 
 print(new_team)
 
-Player.add_players()
+Player.add_players(players)

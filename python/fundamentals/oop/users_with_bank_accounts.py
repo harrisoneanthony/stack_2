@@ -1,5 +1,3 @@
-
-
 class BankAccount:
 
     def __init__(self, int_rate, balance):
@@ -10,7 +8,7 @@ class BankAccount:
         self.balance += amount
         return self
 
-    def withdraw(self, amount):
+    def withdrawl(self, amount):
         if self.balance - amount < 0:
             self.balance -= 5
             print("insufficient funds")
@@ -31,12 +29,8 @@ class BankAccount:
 
     def yield_interest(self):
         if self.balance > 0:
-            self.balance = self.balance 
+            self.balance += (self.balance * self.int_rate)
             return self
-
-
-
-
 
 class User:		
     def __init__(self, first_name, last_name, e_mail, age):
@@ -44,45 +38,30 @@ class User:
         self.last_name = last_name
         self.e_mail = e_mail
         self.age = age
-        self.checking_account = BankAccount(0.4, 0)
+        self.account = BankAccount(0.4, 0)
 
     def display_info(self):
-        print(self.first_name)
-        print(self.last_name)
-        print(self.e_mail)
-        print(self.age)
-        print(self.checking_account.balance)
-        print(self.savings_account.balance)
+        self.account.display_account_info()
+        print(self.account.display_account_info)
         return self
         
-    def make_deposit_to_checking(self, amount):
-        self.checking_account.deposit(amount)
+    def make_deposit(self, amount):
+        self.account.deposit(amount)
         return self
     
-    def make_deposit_to_savings(self, amount):
-        self.savings_account.deposit(amount)
-        return self
-
-    def make_withdrawl_from_checking(self, amount):
-        self.checking_account.withdraw(amount)
-        return self
-    
-    def make_withdrawl_from_savings(self, amount):
-        self.savings_account.withdraw(amount)
+    def make_withdrawl(self, amount):
+        self.account.withdrawl(amount)
         return self
 
     def display_user_balance(self):
-        print(f"Checking Account: ${self.checking_account.balance}")
-        print(f"Savings Account: ${self.savings_account.balance}")
+        print(f"Balance: ${self.account.balance}")
         return self
 
-    def transfer_money_from_checking(self, amount, user):
-        self.checking_account.transfer_money(amount, user)
+    def transfer(self, amount, receiver):
+        self.make_withdrawl(amount)
+        receiver.make_deposit(amount)
         return self
     
-    def transfer_money_from_savings(self, amount, user):
-        self.savings_account.transfer_money(amount, user)
-        return self
 
 
 
@@ -91,4 +70,6 @@ hayley = User("Hayley", "Finik", "hfinik@nobull.com", 26)
 bella = User("Bella", "Alzendez", "bella.@dog.com", 3)
 
 
-harrison.make_deposit_to_checking(100).make_deposit_to_savings(100).display_user_balance()
+harrison.make_deposit(100).transfer(10, bella)
+
+print(harrison.display_user_balance())
