@@ -44,8 +44,7 @@ class User:
         self.last_name = last_name
         self.e_mail = e_mail
         self.age = age
-        self.checking_account = BankAccount(0, 0)
-        self.savings_account = BankAccount(0.02, 0)
+        self.checking_account = BankAccount(0.4, 0)
 
     def display_info(self):
         print(self.first_name)
@@ -92,4 +91,4 @@ hayley = User("Hayley", "Finik", "hfinik@nobull.com", 26)
 bella = User("Bella", "Alzendez", "bella.@dog.com", 3)
 
 
-harrison.make_deposit_to_checking(100).make_deposit_to_savings(100).display_user_balance().transfer_money_from_checking(100,bella)
+harrison.make_deposit_to_checking(100).make_deposit_to_savings(100).display_user_balance()
