@@ -8,16 +8,16 @@
     <title>checkerboard_practice</title>
 </head>
 <body>
-    <h1 style= "backgroud-color:{{color1}};">***Checkerboard_practice***</h1>
+    <h1 style= "background-color:{{color1}}; color:{{color2}}">***Checkerboard_practice***</h1>
     <table>
         {% for i in range(0,col) %}
             {% if i%2 == 0 %}
                 <tr>
                     {% for j in range(0,row) %}
                         {% if j%2 == 0 %}
-                                <td class="color1" style="color:{{color1}};"></td>
+                                <td class="color1" style="background-color: {{color1}}"></td>
                         {% else %}
-                                <td class="color2" style="color:{{color2}};"></td>
+                                <td class="color2" style="background-color:{{color2}}"></td>
                         {% endif %}
                     {% endfor %}
                 </tr>
@@ -25,9 +25,9 @@
             <tr>
                 {% for j in range(0,row) %}
                     {% if j%2 == 0 %}
-                            <td class="color2" style="color:{{color2}};"></td>
+                            <td class="color2" style="background-color:{{color2}}"></td>
                     {% else %}
-                            <td class="color1" style="color:{{color1}};"></td>
+                            <td class="color1" style="background-color:{{color1}}"></td>
                     {% endif %}
                 {% endfor %}
             </tr>
