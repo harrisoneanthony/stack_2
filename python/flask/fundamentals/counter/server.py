@@ -20,7 +20,6 @@ def destroy_session():
 @app.route('/plus_two')
 def plus_two():
     session['count'] += 2
-    redirect('/')
     return render_template('index.html')
 
 @app.route('/reset')
