@@ -1,0 +1,37 @@
+.flexrow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.flexcolumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@green: #245624;
+@font: #f5f5dc;
+
+
+body {
+    .flexcolumn();
+    background-color: @green;
+    color: @font;
+
+    header {
+        .flexcolumn();
+    }
+    main {
+        .flexrow();
+        flex-wrap: wrap;
+
+        .column {
+            .flexcolumn();
+
+            img {
+                max-width: 200px;
+            }
+        }
+    }
+}

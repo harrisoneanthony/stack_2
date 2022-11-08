@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session, redirect, request
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ def count_home():
     if "count" not in session:
         session["count"] = 0
     else:
-        session['count'] +=1
+        session['count'] += 1
     return render_template('index.html')
 
 @app.route('/destroy_session')
