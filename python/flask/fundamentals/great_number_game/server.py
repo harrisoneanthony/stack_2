@@ -32,6 +32,10 @@ def guess():
         return redirect('/')
         # return render_template('index.html')
 
+@app.route('/leaderboard', methods=['POST'])
+def leaderboard():
+    pass
+
 @app.route('/reset')
 def reset():
     session.clear()
