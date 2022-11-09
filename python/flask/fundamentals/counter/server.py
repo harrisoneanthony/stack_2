@@ -19,13 +19,19 @@ def destroy_session():
 
 @app.route('/plus_two')
 def plus_two():
-    session['count'] += 2
-    return render_template('index.html')
+    session['count'] += 1
+    return redirect('/')
 
 @app.route('/reset')
 def reset():
     session['count'] = 0
     return render_template('index.html')
+
+@app.route('/add', methods=['POST'])
+def addnumber():
+    session['count'] += (int(request.form['var_num'])-1)
+    return redirect('/')
+
 
 if __name__ == "__main__":
     app.run(debug = True, port=5001)

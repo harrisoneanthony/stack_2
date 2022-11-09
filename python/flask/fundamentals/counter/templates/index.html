@@ -24,9 +24,11 @@
         <a href="/reset" class="btn btn-warning">Reset Counter</a>
     </div>
     <div class="form text-center col-3 my-5 mx-auto">
-        <label for="" class="form-label">Specify visits:</label>
-        <input type="number" class="form-control">
-        <div class="form-text">Specify the number you would like to the "Increase Visits!" button to increment your visits by</div>
+        <form action="/add" method="POST">
+            <label for="var_num" class="form-label">Specify visits:</label>
+            <input type="text" name="var_num">
+            <div class="form-text">Specify the number you would like to the "Increase Visits!" button to increment your visits by</div>
+        </form>
 
     </div>
 </body>
