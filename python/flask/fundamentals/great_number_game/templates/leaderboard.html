@@ -9,9 +9,23 @@
     <title>Great Number Game</title>
 </head>
 <body>
-    <div class="container bg-dark col-3 my-5 mx-auto">
-        <h1 class="bg-dark text-warning text-decoration-underline col-3 my-5 mx-auto">Leaderboard:</h1>
-        <h2 class="bg-dark text-info col-3 my-5 mx-auto">{{leader_board}}</h2>
-    </div>
+    <h1 class="text-dark text-center mx-auto my-5">Great Number Game Leaderboard</h1>
+    <table class="bg-primary mx-auto my-5 col-3">
+        <tr class="text-light">
+            <th>Name:</th>
+            <th>Score:</th>
+        </tr>
+        {% for player in leader_board %}
+            <tr>
+                <td class="text-warning">
+                    {{player[0]}}
+                </td>
+                <td class="text-warning">
+                    {{player[1]}}
+                </td>
+                {% endfor %}
+            </tr>
+    </table>
+    <a href="/reset" class="btn btn-warning mx-auto mt-5">Play again</a>
 </body>
 </html>
