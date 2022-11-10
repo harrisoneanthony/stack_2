@@ -14,7 +14,30 @@
     </nav>
     <h3>your gold: 0</h3>
     <div class="form_container">
-        <form action=""></form>
+        <form action="/process_money" method='POST'>
+            <label for="farm">Farm</label>
+            <div>(earn 10-20 golds)</div>
+            <input type="submit" name="farm">
+            <button>Find Gold</button>
+        </form>
+        <form action="/process_money" method='POST'>
+            <label for="cave">Cave</label>
+            <div>(earn 5-10 golds)</div>
+            <input type="submit" name="cave">
+            <button>Find Gold</button>
+        </form>
+        <form action="/process_money" method='POST'>
+            <label for="house">House</label>
+            <div>(earn 2-5 golds)</div>
+            <input type="submit" name="house">
+            <button>Find Gold</button>
+        </form>
+        <form action="/process_money" method='POST'>
+            <label for="casino">Casino</label>
+            <div>(earn/lose 0-50 golds)</div>
+            <input type="submit" name="casino">
+            <button>Find Gold</button>
+        </form>
     </div>
 </body>
 </html>
