@@ -10,7 +10,7 @@
 </head>
 <body>
     <h1 class="text-dark text-center mx-auto my-5">Great Number Game Leaderboard</h1>
-    <table class="bg-primary mx-auto my-5 col-3">
+    <table class="rounded bg-primary mx-auto my-5 col-3">
         <tr class="text-light">
             <th>Name:</th>
             <th>Score:</th>
@@ -26,6 +26,8 @@
             {% endfor %}
         </tr>
     </table>
-    <a href="/reset" class="btn btn-warning mx-auto mt-5">Play again</a>
+    <div class="container col-3 mx-auto">
+        <a href="/reset" class="btn btn-warning mx-auto my-5">Play again</a>
+    </div>
 </body>
 </html>
