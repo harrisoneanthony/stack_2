@@ -1,5 +1,6 @@
 from flask import Flask, render_template, session, request, redirect
 import random
+from data import leader_board
 
 app = Flask (__name__)
 app.secret_key = "Can you guess what number I'm thinking of?"
@@ -14,9 +15,9 @@ def home():
     print(session['rand_num'])
     return render_template('index.html')
 
-@app.route('/leaderboard')
+@app.route('/leader')
 def leaderboard():
-    return render_template('leaderboard.html')
+    return render_template('leaderboard.html', leader_board=leader_board)
 
 @app.route('/guess', methods=['POST'])
 def guess():
@@ -33,10 +34,11 @@ def guess():
         session['count'] += 1
         return redirect('/')
 
-@app.route('/guess', methods=['POST'])
+@app.route('/leaderboard', methods=['POST'])
 def addtoleaderboard():
-    session['leaderboard_name'] = request.form['leaderboard_name']
-    return redirect('/leaderboard')
+    leader_board.append([request.form['leaderboard_name'], session['count']])
+    print(leader_board)
+    return redirect('/leader')
 
 @app.route('/reset')
 def reset():
