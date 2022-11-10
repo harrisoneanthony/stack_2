@@ -14,27 +14,29 @@ def home():
     print(session['rand_num'])
     return render_template('index.html')
 
+@app.route('/leaderboard')
+def leaderboard():
+    return render_template('leaderboard.html')
+
 @app.route('/guess', methods=['POST'])
 def guess():
     if int(request.form['num_guess']) > int(session["rand_num"]):
         session['result'] = "too high! try again"
         session['count'] += 1
         return redirect('/')
-        # return render_template('index.html')
     elif int(request.form['num_guess']) < int(session["rand_num"]):
         session['result'] = "too low! try again"
         session['count'] += 1
         return redirect('/')
-        # return render_template('index.html')
     else:
         session['result'] = "correct!"
         session['count'] += 1
         return redirect('/')
-        # return render_template('index.html')
 
-@app.route('/leaderboard', methods=['POST'])
-def leaderboard():
-    pass
+@app.route('/guess', methods=['POST'])
+def addtoleaderboard():
+    session['leaderboard_name'] = request.form['leaderboard_name']
+    return redirect('/leaderboard')
 
 @app.route('/reset')
 def reset():

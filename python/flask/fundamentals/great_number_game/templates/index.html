@@ -12,7 +12,7 @@
     <div class="container bg-dark text-light col-7 text-center mx-auto">
         <h1 class="mx-auto my-5">Welcome to the Great Number Game!!!</h1>
         <h3>I am thinking of a number between 1 and 100</h2>
-        <h3 class="">number of guesses: <span style="background-color:aqua; color: rebeccapurple;">{{session['count']}}</span></h3>
+        <h3>number of guesses: <span style="background-color:aqua; color: rebeccapurple;">{{session['count']}}</span></h3>
         {% if session['count'] == 5 %}
                 <h2 class="bg-dark text-danger col-7 text-center mx-auto">You lose! Try again</h2>
                 <a href="/reset" class="btn btn-primary">Play again</a>
@@ -24,8 +24,8 @@
                 <h2 class="bg-success text-dark col-3 text-center mx-auto">Correct! </h2>
                 <h3 class="bg-success text-dark col-3 text-center mx-auto">It took you <span style="background-color: aqua; color: rebeccapurple;">{{session['count']}}</span> guess(es) to find the number!</h3>
                 <form class="mx-auto text-center col-3" action="/leaderboard" method="POST">
-                    <label for="leaderboard">Enter your name, stud!</label>
-                    <input type="text" name="leaderboard">
+                    <label for="leaderboard_name">Enter your name, stud!</label>
+                    <input type="text" name="leaderboard_name">
                     <a href="/leaderboard" class="btn btn-info mt-1">Submit to leaderboard</a>
                 </form>
                 <a href="/reset" class="btn btn-primary mt-5">Play again</a>
