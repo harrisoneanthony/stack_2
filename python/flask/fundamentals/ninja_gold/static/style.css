@@ -1,0 +1,24 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.form_container {
+    display: flex;
+    justify-content: space-around;
+}
+
+form {
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+form > * {
+    margin: 10px;
+}
+
+h3 {
+    margin: 30px;
+}
