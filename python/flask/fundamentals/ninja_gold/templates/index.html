@@ -11,32 +11,35 @@
 
 </head>
 <body>
-    <h3>your gold: 0</h3>
+    <h3>your gold: {{session['gold']}}</h3>
     <div class="form_container">
         <form action="/process_money" method='POST'>
-            <label for="farm">Farm</label>
+            <input type='hidden' name="building" value="farm"/> 
             <div>(earn 10-20 golds)</div>
-            <input type="submit" name="farm" value="Find Gold">
+            <input class="bg-warning" type="submit" value="Find Gold"/>
         </form>
         <form action="/process_money" method='POST'>
-            <label for="cave">Cave</label>
+            <input type='hidden' name="building" value="cave"/> 
             <div>(earn 5-10 golds)</div>
-            <input type="submit" name="cave" value="Find Gold">
+            <input class="bg-warning" type="submit" value="Find Gold"/>
         </form>
         <form action="/process_money" method='POST'>
-            <label for="house">House</label>
+            <input type='hidden' name="building" value="house"/> 
             <div>(earn 2-5 golds)</div>
-            <input type="submit" name="house" value="Find Gold">
+            <input class="bg-warning" type="submit" value="Find Gold"/>
         </form>
         <form action="/process_money" method='POST'>
-            <label for="casino">Casino</label>
+            <input type='hidden' name="building" value="casino"/> 
             <div>(earn/lose 0-50 golds)</div>
-            <input type="submit" name="casino" value="Find Gold">
+            <input class="bg-warning" type="submit" value="Find Gold"/>
         </form>
-        <div class="activity">
-            <h2>Activity:</h2>
-            <div class="activity_box"></div>
-        </div>
+    </div>
+    <div class="activity">
+        <h3>Activity:</h3>
+        <div class="activity_box"></div>
+    </div>
+    <div class="reset">
+        <a href="/reset" class="btn btn-danger mt-5">Reset</a>
     </div>
 </body>
 </html>

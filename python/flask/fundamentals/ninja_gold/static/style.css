@@ -19,6 +19,26 @@ form > * {
     margin: 10px;
 }
 
-h3 {
+h3, .activity{
     margin: 30px;
 }
+
+body {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.activity_box {
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 200px;
+    width: auto;
+    overflow: auto;
+}
+
+.reset {
+    margin-left: 30px;
+    height: 100px;
+}
+
