@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Your Gems!: {{session.gems}}</h1>
+        <div class="card">
+            <h2>Sapphire</h2>
+            <p>mine 5-10 sapphire</p>
+            <form action="/process_gems" method="POST">
+                <input type="hidden" name="mines" value="sapphire">
+                <button>Mine</button>
+            </form>
+        </div>
+        <div class="card">
+            <h2>Ruby</h2>
+            <p>mine 15-20 ruby</p>
+            <form action="/process_gems" method="POST">
+                <input type="hidden" name="mines" value="ruby">
+                <button>Mine</button>
+            </form>
+        </div>
+        <div class="card">
+            <h2>Diamond</h2>
+            <p>mine 2-5 diamond</p>
+            <form action="/process_gems" method="POST">
+                <input type="hidden" name="mines" value="diamond">
+                <button>Mine</button>
+            </form>
+        </div>
+        <div class="card">
+            <h2>Emerald</h2>
+            <p>mine earns/takes 0-50 emerald</p>
+            <form action="/process_gems" method="POST">
+                <input type="hidden" name="mines" value="emerald">
+                <button>Mine</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
