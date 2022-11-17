@@ -1,24 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
-        
+<!-- winning parameters -->
+{% if session['gold'] >= 500%}
+    <h5>You Win!</h5>
+    <div class="reset">
+        <a href="/reset" class="btn btn-success mt-5">Play again!
+        </a>
+    </div>
+{% else %}
+    <h5>Attempts remaining: {{15-session['count']}}</h5>
+{% endif %}
+<!-- losing parameters -->
+{% if session['count'] == 15 and session['gold'] < 500 %}
+    <h5>Sorry, try again!</h5>
+    <div class="reset">
+        <a href="/reset" class="btn btn-danger mt-5">Reset</a>
+    </div>
+{% endif %}
+
     <h3>your gold: {{session['gold']}}</h3>
     <div class="form_container">
         <form action="/process_money" method='POST'>
+            <h4>Farm</h4>
             <input type='hidden' name="building" value="farm"/> 
             <div>(earn 10-20 golds)</div>
             <input class="bg-warning" type="submit" value="Find Gold"/>
         </form>
         <form action="/process_money" method='POST'>
+            <h4>Cave</h4>
             <input type='hidden' name="building" value="cave"/> 
             <div>(earn 5-10 golds)</div>
             <input class="bg-warning" type="submit" value="Find Gold"/>
         </form>
         <form action="/process_money" method='POST'>
+            <h4>House</h4>
             <input type='hidden' name="building" value="house"/> 
             <div>(earn 2-5 golds)</div>
             <input class="bg-warning" type="submit" value="Find Gold"/>
         </form>
         <form action="/process_money" method='POST'>
+            <h4>Casino</h4>
             <input type='hidden' name="building" value="casino"/> 
             <div>(earn/lose 0-50 golds)</div>
             <input class="bg-warning" type="submit" value="Find Gold"/>
@@ -36,8 +57,5 @@
                 
             {% endfor %}
         </div>
-    </div>
-    <div class="reset">
-        <a href="/reset" class="btn btn-danger mt-5">Reset</a>
     </div>
 {% endblock  %}
