@@ -10,7 +10,8 @@ class Friend:
         self.occupation = data['occupation']
         self.created_at = data['created_at']
         self.pdated_at = data['updated_at']
-    #  now we use class methods to query our database
+    #  now we use class methods to query our databases``
+
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM friends;"
@@ -22,3 +23,10 @@ class Friend:
         for friend in results:
             friends.append( cls(friend) )
         return friends
+
+    #  class method to save our friend to the database
+    @classmethod
+    def save(cls, data):
+        query = "INSERT INTO friends ( first_name, last_name, occupation, createdat, updated_at ) VALUES ( %(fname)s, %(lname)s, %(occ)s, NOW(), NOW() );"
+        # data is a dictionary that will be passed into the save method from server.py
+        return connectToMySQL('first_flask').query_db(query,data)
