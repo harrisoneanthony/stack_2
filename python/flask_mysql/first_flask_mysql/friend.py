@@ -1,5 +1,4 @@
 # import the function that will return an instance of a connetion
-
 from mysqlconnection import connectToMySQL
 #  model the class after the friend table from our database
 class Friend:
@@ -9,7 +8,7 @@ class Friend:
         self.last_name = data['last_name']
         self.occupation = data['occupation']
         self.created_at = data['created_at']
-        self.pdated_at = data['updated_at']
+        self.updated_at = data['updated_at']
     #  now we use class methods to query our databases``
 
     @classmethod
