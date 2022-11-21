@@ -22,5 +22,19 @@ def create_user():
     User.save(data)
     return redirect('/')
 
+@app.route("/show")
+def show():
+
+    return render_template('read_one.html')
+
+@app.route("/edit")
+def edit():
+
+    return render_template('edit.html')
+
+@app.route("/delete")
+def delete():
+    return redirect('/')
+
 if __name__ == "__main__":
     app.run(debug = True, port=5001)

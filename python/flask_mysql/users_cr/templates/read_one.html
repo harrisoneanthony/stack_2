@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="d-flex justify-content-between">
+    <h1>User</h1>
+    <a href="/">Home</a>
+</div>
+<div class="user_card border border-info col-4 p-2">
+    <p>Full Name: </p>
+    <p>Email: </p>
+    <p>Created on: </p>
+    <p>Last updated on: </p>
+</div>
+<a href="/edit">Edit</a> | <a href="/delete">Delete</a>
+{% endblock%}
