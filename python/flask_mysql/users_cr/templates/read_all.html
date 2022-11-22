@@ -8,20 +8,24 @@
             <th scope="col">Full Name</th>
             <th scope="col">Email</th>
             <th scope="col">Created at</th>
+            <th scope="col">Updated at</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
-        {% for one_user in all_users %}
+        {% for user in all_users %}
             <tr>
-                <td>{{one_user.id}}</td>
-                <td>{{one_user.first_name}} {{one_user.last_name}}</td>
-                <td>{{one_user.email}}</td>
-                <td>{{one_user.created_at}}</td>
-                <td><a href="/show">Show</a> | <a href="/edit">Edit</a> | <a href="/delete">Delete</a></td>
+                <td>{{user.id}}</td>
+                <td>{{user.first_name}} {{user.last_name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.created_at.strftime('%b %d %Y %I:%M %p')}}</td>
+                <td>{{user.updated_at.strftime('%b %d %Y %I:%M %p')}}</td>
+                <td><a href="/user/show/{{ user.id }}">Show</a> | 
+                    <a href="/user/edit/{{ user.id }}">Edit</a> | 
+                    <a href="/user/delete/{{ user.id }}">Delete</a></td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
-<a href="/add_user"> Add a New User</a>
+<a href="/user/new"> Add a New User</a>
 {% endblock %}

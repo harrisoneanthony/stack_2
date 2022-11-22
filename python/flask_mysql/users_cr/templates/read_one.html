@@ -1,14 +1,14 @@
 {% extends 'base.html'%}
 {% block content%}
 <div class="d-flex justify-content-between">
-    <h1>User</h1>
+    <h1>User {{user.id}}</h1>
     <a href="/">Home</a>
 </div>
 <div class="user_card border border-info col-4 p-2">
-    <p>Full Name: </p>
-    <p>Email: </p>
-    <p>Created on: </p>
-    <p>Last updated on: </p>
+    <p>Full Name: {{user.first_name}} {{user.last_name}}</p>
+    <p>Email: {{user.email}}</p>
+    <p>Created on: {{user.created_at.strftime("%b %d %Y")}}</p>
+    <p>Last updated on: {{user.updated_at.strftime("%b %d %Y")}}</p>
 </div>
-<a href="/edit">Edit</a> | <a href="/delete">Delete</a>
+<a href="/user/edit/{{ user.id }}">Edit</a> | <a href="/delete">Delete</a>
 {% endblock%}

@@ -2,39 +2,51 @@ from flask import Flask, render_template, redirect, request
 from user import User
 app = Flask(__name__)
 
-@app.route("/")
+
+@app.route('/')
 def index():
-    users = User.get_all()
-    print(users)
-    return render_template("read_all.html", all_users = users)
+    return redirect("/users")
 
-@app.route("/add_user")
+@app.route('/users')
+def users():
+    return render_template("read_all.html", all_users = User.get_all())
+
+@app.route('/user/new')
 def add_user():
-    return render_template("create.html")
+    return render_template("new_user.html")
 
-@app.route("/create_user", methods=['POST'])
+@app.route('/user/create', methods=['POST'])
 def create_user():
+    User.save(request.form)
+    return redirect('/users')
+
+
+@app.route("/user/edit/<int:id>")
+def edit(id):
     data = {
-        "fname": request.form['fname'],
-        "lname": request.form['lname'],
-        "email": request.form['email']
+        "id":id
     }
-    User.save(data)
-    return redirect('/')
+    return render_template('edit.html', user=User.get_one(data))
 
-@app.route("/show")
-def show():
+@app.route('/user/show/<int:id>')
+def show(id):
+    data = {
+        "id":id
+    }
+    return render_template("read_one.html", user=User.get_one(data))
 
-    return render_template('read_one.html')
+@app.route("/user/update", methods=['POST'])
+def update():
+    User.update(request.form)
+    return redirect('/users')
 
-@app.route("/edit")
-def edit():
-
-    return render_template('edit.html')
-
-@app.route("/delete")
-def delete():
-    return redirect('/')
+@app.route('/user/delete/<int:id>')
+def delete(id):
+    data ={
+        'id': id
+    }
+    User.delete(data)
+    return redirect('/users')
 
 if __name__ == "__main__":
     app.run(debug = True, port=5001)

@@ -17,7 +17,6 @@ def home():
         session['activity'] = []
     if 'count' not in session:
         session['count'] = 0
-    
     return render_template('index.html')
 
 # without multi-conditionals
@@ -47,9 +46,9 @@ def process_money():
 # def process_money():
 #     if request.form['building'] == "farm":
 #         mined_gold = rand_gold(10,20)
-#         if mined_gold < 0:
-#             color = "red"
-#         else: color = "green"
+        # if mined_gold < 0:
+        #     color = "red"
+        # else: color = "green"
 #         session['gold'] += mined_gold
 #         session['count'] +=1
 #     elif request.form['building'] == "cave":

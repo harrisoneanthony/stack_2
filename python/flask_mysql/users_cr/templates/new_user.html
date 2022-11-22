@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="d-flex justify-content-between">
+    <h1>Add a New User</h1>
+    <a href="/">Home</a>
+</div>
+<form class="d-flex align-items-start flex-column" action="/user/create" method="POST">
+    <label for="first_name">First name: </label>
+    <input type="text" name="first_name">
+    <label for="last_name">Last name: </label>
+    <input type="text" name="last_name">
+    <label for="email">Email: </label>
+    <input type="text" name="email">
+    <input class="bg-info mt-2 mb-2" type="submit" value="create_user">
+</form>
+{%  endblock %}
