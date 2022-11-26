@@ -10,5 +10,5 @@
     <p>Created on: {{user.created_at.strftime("%b %d %Y")}}</p>
     <p>Last updated on: {{user.updated_at.strftime("%b %d %Y")}}</p>
 </div>
-<a href="/user/edit/{{ user.id }}">Edit</a> | <a href="/delete">Delete</a>
+<a href="/user/edit/{{ user.id }}">Edit</a> | <a href="/user/delete/{{ user.id }}">Delete</a>
 {% endblock%}

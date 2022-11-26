@@ -29,7 +29,7 @@ def edit(id):
     return render_template('edit.html', user=User.get_one(data))
 
 @app.route('/user/show/<int:id>')
-def show(id):
+def get_one(id):
     data = {
         "id":id
     }
