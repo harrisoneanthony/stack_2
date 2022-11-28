@@ -17,8 +17,12 @@ def add_user():
 
 @app.route('/user/create', methods=['POST'])
 def create_user():
-    User.save(request.form)
-    return redirect('/users')
+    data = {
+        "first_name": request.form["first_name"],
+        "last_name": request.form["last_name"],
+        "email": request.form["email"],
+    }
+    return redirect(f'/user/show/{User.save(data)}')
 
 
 @app.route("/user/edit/<int:id>")
@@ -35,10 +39,10 @@ def get_one(id):
     }
     return render_template("read_one.html", user=User.get_one(data))
 
-@app.route("/user/update", methods=['POST'])
-def update():
+@app.route("/user/update/<int:id>", methods=['POST'])
+def update(id):
     User.update(request.form)
-    return redirect('/users')
+    return redirect(f'/user/show/{id}')
 
 @app.route('/user/delete/<int:id>')
 def delete(id):

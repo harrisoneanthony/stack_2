@@ -4,7 +4,7 @@
     <h1>Edit User</h1>
     <a href="/">Home</a>
 </div>
-<form class="d-flex align-items-start flex-column" action="/user/update" method="POST">
+<form class="d-flex align-items-start flex-column" action="/user/update/{{ user.id }}" method="POST">
     <h2 class="text-center">Update user info for {{user.first_name}} {{user.last_name}} </h2>
     <input type="hidden" name="id" value={{user.id}}>
     <label for="first_name">First name: </label>
