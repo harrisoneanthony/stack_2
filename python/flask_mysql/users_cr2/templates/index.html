@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% block content %}
+<body>
+    <h1>All Users</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">email</th>
+                    <th scope="col">created at</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in all_users %}
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.first_name}} {{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.created_at}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/user/new">Create new user</a>
+</body>
+{% endblock%}

@@ -14,7 +14,7 @@ class Restaurant:
         return connectToMySQL('burgers').query_db( query, data)
 
 # We need to import the burger class from our models
-from flask_app.models import burger
+from flask_app.models.burger import burger
 class Restaurant:
     ...
     @classmethod
