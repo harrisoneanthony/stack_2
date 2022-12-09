@@ -35,8 +35,20 @@ def accum(s):
     return new_str
         
 
-print(accum("ZpglnRxqenU"))
-print(accum("NyffsGeyylB"))
-print(accum("MjtkuBovqrU"))
-print(accum("EvidjUnokmM"))
-print(accum("HbideVbxncC"))
+# print(accum("ZpglnRxqenU"))
+# print(accum("NyffsGeyylB"))
+# print(accum("MjtkuBovqrU"))
+# print(accum("EvidjUnokmM"))
+# print(accum("HbideVbxncC"))
+
+'''Given a list of integers return a new list moving all of the zeros to the back of the list
+example: [ 0, 2, 1, 6, 4, 3, 6, 0, 3 ] would return [2, 1, 6, 4, 3, 6, 3, 0, 0]'''
+
+def move_zeros(l):
+    for i in l:
+        if i == 0:
+            l.remove(i)
+            l.insert(len(l),i)
+    return l
+
+print(move_zeros([0, 2, 1, 6, 4, 3, 6, 0, 3]))
