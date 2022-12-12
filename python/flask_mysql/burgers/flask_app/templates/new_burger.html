@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <a href="/">Create a new burger</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Burger id</th>
+                <th>Burger name</th>
+                <th>Bun type</th>
+                <th>Meat</th>
+                <th>Calories</th>
+                <th>Restaurant</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for burger in all_burgers %}
+            <tr>
+                <td>{{burger.id}}</td>
+                <td>{{burger.name}}</td>
+                <td>{{burger.bun}}</td>
+                <td>{{burger.meat}}</td>
+                <td>{{burger.calories}}</td>
+                <td>{{restaurants.name}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+{% endblock %}
