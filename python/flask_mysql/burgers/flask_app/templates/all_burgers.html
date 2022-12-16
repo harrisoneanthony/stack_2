@@ -10,8 +10,6 @@
                 <th>Bun type</th>
                 <th>Meat</th>
                 <th>Calories</th>
-                <th>Restaurant</th>
-                <th>Created at</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +20,8 @@
                 <td>{{burger.bun}}</td>
                 <td>{{burger.meat}}</td>
                 <td>{{burger.calories}}</td>
-                <td>{{restaurant.name}}</td>
-                <td>{{burger.created_at}}</td>
+                <td><a href="/show/burger/{{burger.id}}">Show</a></td>
+                <td><a href="/delete/{{burger.id}}">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>

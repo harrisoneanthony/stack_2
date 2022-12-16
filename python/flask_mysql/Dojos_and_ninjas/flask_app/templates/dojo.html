@@ -9,6 +9,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Age</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
 
@@ -18,6 +19,7 @@
                     <td>{{ ninja.first_name }}</td>
                     <td>{{ ninja.last_name }}</td>
                     <td>{{ ninja.age }}</td>
+                    <td><a href="/ninja/edit/{{ninja.id}}">Edit</a> | <a href="/ninja//delete/{{ninja.id}}/{{dojo.id}}">Delete</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

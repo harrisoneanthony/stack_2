@@ -12,10 +12,8 @@ class Dojo:
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM dojos;"
-
         results = connectToMySQL('dojos_and_ninjas_schema').query_db(query)
         dojos = []
-
         for d in results:
             dojos.append( cls(d) )
         return dojos
@@ -40,6 +38,7 @@ class Dojo:
                 'age': row['age'],
                 'created_at': row['ninjas.created_at'],
                 'updated_at': row['ninjas.updated_at'],
+                'dojo_id': row['dojo_id']
             }
             dojo.ninjas.append( Ninja(n) )
         return dojo

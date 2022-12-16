@@ -19,7 +19,7 @@
     </div>
     <div class="select_restaurant mb-3">
         <p>Restaurant</p>
-        <select class="mx-2" name="restaurant_id">
+        <select class="mx-2" name="restaurants_id">
             <!-- Need to create an option list for the user to select a restaurant. -->
             <!-- Note that we are passing the restaurant id into the value -->
             {% for restaurant in all_restaurants %}
@@ -28,6 +28,7 @@
         </select>
     </div>
     <button>Create Burger</button>
+    <a href="/burgers">See all burgers</a>
 </form>
     
 {% endblock %}

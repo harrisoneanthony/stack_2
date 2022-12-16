@@ -1,0 +1,19 @@
+{% extends 'base.html'%}
+{% block content%}
+<div class="d-flex justify-content-between">
+    <h1>Edit Ninja</h1>
+    <a href="/">Home</a>
+</div>
+<form class="d-flex align-items-start flex-column" action="/ninja/update/{{one_ninja.id}}" method="POST">
+    <h2 class="text-center">Update ninja info for {{one_ninja.first_name}} {{one_ninja.last_name}} </h2>
+    <input type="hidden" name="id" value={{one_ninja.id}}>
+    <input type="hidden" name="dojo_id" value={{one_ninja.dojo_id}}>    
+    <label for="first_name">First name: </label>
+    <input type="text" name="first_name" class="form-control" value="{{one_ninja.first_name}}">
+    <label for="last_name">Last name: </label>
+    <input type="text" name="last_name" class="form-control" value="{{one_ninja.last_name}}">
+    <label for="age">Age: </label>
+    <input type="text" name="age" class="form-control" value="{{one_ninja.age}}">
+    <input class="bg-info mt-2 mb-2" type="submit" value="update">
+</form>
+{% endblock%}

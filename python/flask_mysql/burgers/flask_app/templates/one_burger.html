@@ -14,16 +14,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for burger in all_burgers %}
             <tr>
                 <td>{{burger.id}}</td>
                 <td>{{burger.name}}</td>
                 <td>{{burger.bun}}</td>
                 <td>{{burger.meat}}</td>
                 <td>{{burger.calories}}</td>
-                <td>{{restaurants.name}}</td>
+                <td>{{burger.restaurant_name}}</td>
             </tr>
-            {% endfor %}
         </tbody>
     </table>
 </body>
