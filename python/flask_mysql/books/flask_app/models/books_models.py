@@ -7,3 +7,13 @@ class Books:
         self.num_of_pages = data['num_of_pages']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+
+
+    @classmethod
+    def get_all(cls):
+        query = "SELECT * FROM books;"
+        books = []
+        results = connectToMySQL('books').query_db(query)
+        for row in results:
+            books.append(cls(row))
+        return books
