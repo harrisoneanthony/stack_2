@@ -2,21 +2,34 @@
 {% block content %}
 <body>
     <div class="container">
-        <h1>Change Order</h1>
-        <form action="">
-            <div class="form-group">
+        <div class="top_row">
+            <h1>Change Order</h1>
+            <a class="mt-3 mx-3" href="/">Back to purchases</a>
+        </div>
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+            {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p class="text-danger">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/cookies/edit/{{cookie_order.id}}" method="POST">
+            <div class="form-group col-3">
+                <input type="hidden" name="id" value={{cookie_order.id}}>
                 <label for="name">Name:</label>
-                <input name="name" type="text" class="form-control">
+                <input name="name" type="text" class="form-control" value="{{cookie_order.name}}">
             </div>
-            <div class="form-group">
-                <label for="cookie_type">Cookie Type</label>
-                <input name="cookie_type" type="text" class="form-control" placeholder="ex.thin mints">
+            <div class="form-group col-3">
+                <label for="cookie_name">Cookie Type</label>
+                <input name="cookie_name" type="text" class="form-control" value="{{cookie_order.cookie_name}}">
             </div>
-            <div class="form-group">
+            <div class="form-group col-3">
                 <label for="num_of_boxes">Number of Boxes</label>
-                <input name="num_of_boxes" type="number" class="form-control">
+                <input name="num_of_boxes" type="number" class="form-control" value="{{cookie_order.num_of_boxes}}">
             </div>
-            <input type="submit" class="form-control" value="Submit">
+            <div class="form-group col-3 mt-2 pb-2">
+                <input type="submit" class="form-control" value="Log">
+            </div>
         </form>
     </div>
 </body>
