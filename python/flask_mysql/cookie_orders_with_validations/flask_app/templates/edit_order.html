@@ -13,24 +13,27 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <form action="/cookies/edit/{{cookie_order.id}}" method="POST">
-            <div class="form-group col-3">
-                <input type="hidden" name="id" value={{cookie_order.id}}>
-                <label for="name">Name:</label>
-                <input name="name" type="text" class="form-control" value="{{cookie_order.name}}">
-            </div>
-            <div class="form-group col-3">
-                <label for="cookie_name">Cookie Type</label>
-                <input name="cookie_name" type="text" class="form-control" value="{{cookie_order.cookie_name}}">
-            </div>
-            <div class="form-group col-3">
-                <label for="num_of_boxes">Number of Boxes</label>
-                <input name="num_of_boxes" type="number" class="form-control" value="{{cookie_order.num_of_boxes}}">
-            </div>
-            <div class="form-group col-3 mt-2 pb-2">
-                <input type="submit" class="form-control" value="Log">
-            </div>
-        </form>
+        <div class="form_container">
+            <form action="/cookies/edit/{{cookie_order.id}}" method="POST">
+                <div class="form-group col-3">
+                    <input type="hidden" name="id" value={{cookie_order.id}}>
+                    <label for="name">Name:</label>
+                    <input name="name" type="text" class="form-control" value="{{cookie_order.name}}">
+                </div>
+                <div class="form-group col-3">
+                    <label for="cookie_name">Cookie Type</label>
+                    <input name="cookie_name" type="text" class="form-control" value="{{cookie_order.cookie_name}}">
+                </div>
+                <div class="form-group col-3">
+                    <label for="num_of_boxes">Number of Boxes</label>
+                    <input name="num_of_boxes" type="number" class="form-control" value="{{cookie_order.num_of_boxes}}">
+                </div>
+                <div class="form-group col-3 mt-2 pb-2">
+                    <input type="submit" class="form-control" value="Log">
+                </div>
+            </form>
+            <a href="/cookies/delete/{{cookie_order.id}}">Delete Order</a>
+        </div>
     </div>
 </body>
 {% endblock %}

@@ -61,7 +61,7 @@ class Cookie_order:
 
     @classmethod
     def delete(cls, data):
-        query = "DELETE * FROM cookie_order WHERE id = %(id)s"
+        query = "DELETE FROM cookie_order WHERE id = %(id)s"
         return connectToMySQL('cookie_orders').query_db(query,data)
 
     
