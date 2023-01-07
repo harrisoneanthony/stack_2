@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <h1>Friendships</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Friend</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in all_friends %}
+            <tr>
+                <td>{{user.first_name}} {{user.last_name}}</td>
+                <td>{{user.friend_first_name}} {{user.friend_last_name}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h1>Add User</h1>
+    <form class="d-flex align-items-start flex-column" action="/user/create" method="POST">
+        <label for="first_name">First name: </label>
+        <input type="text" name="first_name">
+        <label for="last_name">Last name: </label>
+        <input type="text" name="last_name">
+        <input class="bg-info mt-2 mb-2" type="submit" value="Add User">
+    </form>
+    <h1>Create Friendship</h1>
+    <form class="d-flex align-items-start flex-column" action="/friendship/create" method="POST">
+        <label for="user_id">User </label>
+        <select name="user_id" class="form-control" >
+            {% for user in all_users %}
+                <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+            {% endfor %}
+        </select>
+        <label for="friendship_id">Friendship </label>
+        <select name="friendship_id" class="form-control" >
+            {% for user in all_users %}
+                <option value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+            {% endfor %}
+        </select>
+        <input class="bg-info mt-2 mb-2" type="submit" value="Create">
+    </form>
+
+</body>
+{% endblock %}

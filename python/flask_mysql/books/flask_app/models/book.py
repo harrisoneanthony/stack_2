@@ -1,5 +1,5 @@
 from ..config.mysqlconnection import connectToMySQL
-from flask_app.models import authors_models
+from flask_app.models import author
 
 class Book:
     def __init__(self, data):
@@ -16,7 +16,7 @@ class Book:
     def get_all(cls):
         query = "SELECT * FROM books;"
         books = []
-        results = connectToMySQL('books').query_db(query)
+        results = connectToMySQL('books_schema').query_db(query)
         for row in results:
             books.append(cls(row))
         return books
@@ -24,12 +24,12 @@ class Book:
     @classmethod
     def save(cls,data):
         query = "INSERT INTO books (title,num_of_pages) VALUES (%(title)s,%(num_of_pages)s);"
-        return connectToMySQL('books').query_db(query,data)
+        return connectToMySQL('books_schema').query_db(query,data)
 
     @classmethod
     def get_by_id(cls,data):
         query = "SELECT * FROM books LEFT JOIN favorites ON books.id = favorites.book_id LEFT JOIN authors ON authors.id = favorites.author_id WHERE books.id = %(id)s;"
-        results = connectToMySQL('books').query_db(query,data)
+        results = connectToMySQL('books_schema').query_db(query,data)
 
         book = cls(results[0])
 
@@ -42,13 +42,13 @@ class Book:
                 "created_at": row['authors.created_at'],
                 "updated_at": row['authors.updated_at']
             }
-            book.authors_who_favorited.append(authors_models.Author(data))
+            book.authors_who_favorited.append(author.Author(data))
         return book
 
     @classmethod
     def unfavorited_books(cls,data):
         query = "SELECT * FROM books WHERE books.id NOT IN ( SELECT book_id FROM favorites WHERE author_id = %(id)s );"
-        results = connectToMySQL('books').query_db(query,data)
+        results = connectToMySQL('books_schema').query_db(query,data)
         books = []
         for row in results:
             books.append(cls(row))

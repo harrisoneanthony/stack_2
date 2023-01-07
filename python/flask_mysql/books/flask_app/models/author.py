@@ -1,5 +1,6 @@
 from ..config.mysqlconnection import connectToMySQL
-from flask_app.models import books_models
+from flask_app.models import book
+
 class Author:
     def __init__(self,data):
         self.id = data['id']
@@ -14,7 +15,7 @@ class Author:
     def get_all(cls):
         query = "SELECT * FROM authors;"
         authors = []
-        results = connectToMySQL('books').query_db(query)
+        results = connectToMySQL('books_schema').query_db(query)
         for row in results:
             authors.append(cls(row))
         return authors
@@ -22,13 +23,13 @@ class Author:
     @classmethod
     def save(cls,data):
         query = "INSERT INTO authors (name) VALUES (%(name)s);"
-        return connectToMySQL('books').query_db(query,data)
+        return connectToMySQL('books_schema').query_db(query,data)
 
     @classmethod
     def unfavorited_authors(cls,data):
         query = "SELECT * FROM authors WHERE authors.id NOT IN ( SELECT author_id FROM favorites WHERE book_id = %(id)s );"
         authors = []
-        results = connectToMySQL('books').query_db(query,data)
+        results = connectToMySQL('books_schema').query_db(query,data)
         for row in results:
             authors.append(cls(row))
         return authors
@@ -36,13 +37,13 @@ class Author:
     @classmethod
     def add_favorite(cls,data):
         query = "INSERT INTO favorites (author_id,book_id) VALUES (%(author_id)s,%(book_id)s);"
-        return connectToMySQL('books').query_db(query,data);
+        return connectToMySQL('books_schema').query_db(query,data)
 
 
     @classmethod
     def get_by_id(cls,data):
         query = "SELECT * FROM authors LEFT JOIN favorites ON authors.id = favorites.author_id LEFT JOIN books ON books.id = favorites.book_id WHERE authors.id = %(id)s;"
-        results = connectToMySQL('books').query_db(query,data)
+        results = connectToMySQL('books_schema').query_db(query,data)
 
         # Creates instance of author object from row one
         author = cls(results[0])
@@ -59,5 +60,5 @@ class Author:
                 "created_at": row['books.created_at'],
                 "updated_at": row['books.updated_at']
             }
-            author.favorite_books.append(books_models.Book(data))
+            author.favorite_books.append(book.Book(data))
         return author

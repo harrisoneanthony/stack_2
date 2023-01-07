@@ -1,12 +1,12 @@
-from flask import render_template,redirect,request
 from flask_app import app
-from ..models.authors_models import Author
-from ..models.books_models import Book
+from flask import redirect, render_template,request
+from ..models.author import Author
+from ..models.book import Book
 
 
 @app.route('/books')
 def books():
-    return render_template('books.html',all_books= Book.get_all())
+    return render_template('books.html',all_books=Book.get_all())
 
 @app.route('/create/book',methods=['POST'])
 def create_book():
@@ -22,7 +22,7 @@ def show_book(id):
     data = {
         "id":id
     }
-    return render_template('show_book.html',book= Book.get_by_id(data),unfavorited_authors=Author.unfavorited_authors(data))
+    return render_template('show_books.html',book=Book.get_by_id(data),unfavorited_authors=Author.unfavorited_authors(data))
 
 @app.route('/join/author',methods=['POST'])
 def join_author():
