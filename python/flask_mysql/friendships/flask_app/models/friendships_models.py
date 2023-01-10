@@ -14,3 +14,12 @@ class Friendship:
     def create_friendship(cls,data):
         query = "INSERT INTO friendships (user_id, friendship_id) VALUES ( %(user_id)s, %(friendship_id)s )"
         return connectToMySQL(db).query_db(query,data)
+
+    @staticmethod
+    def friendship_checker(data):
+        query = "SELECT * FROM friendships WHERE user_id = %(user_id)s AND friendship_id = %(friendship_id)s"
+        results = connectToMySQL(db).query_db(query,data)
+        print(results)
+        if len(results)>0:
+            return False
+        return True
