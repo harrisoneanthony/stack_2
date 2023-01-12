@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <h1>Hello, {{session['first_name']}}</h1>
+    <form action="/logout">
+        <button class="bg-warning-subtle" type="submit">Logout</button>
+    </form>
+</body>
+{% endblock %}
