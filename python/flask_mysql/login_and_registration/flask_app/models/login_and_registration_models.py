@@ -29,6 +29,10 @@ class User:
         if len(user['password']) < 8:
             flash("Password must be at least 8 characters.", 'password')
             is_valid = False
+        # if not re.search("[A-Z]", user['password']):
+        #     flash("Password must contain at least one capital letter.", 'password')
+        # if not re.search("[0-9]", user['password']):
+        #     flash("Password must contain at least one number.", 'password')
         if user['password'] != user['confirm_password']:
             flash("Passwords must match", 'confirm_password')
         return is_valid
