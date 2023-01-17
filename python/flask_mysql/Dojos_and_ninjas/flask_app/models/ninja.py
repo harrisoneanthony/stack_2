@@ -31,5 +31,5 @@ class Ninja:
 
     @classmethod
     def update(cls,data):
-        query = "UPDATE ninjas SET first_name = %(first_name)s, last_name = %(last_name)s, age = %(age)s WHERE id = %(id)s;"
+        query = "UPDATE ninjas SET first_name = %(first_name)s, last_name = %(last_name)s, age = %(age)s WH`ERE id = %(id)s;"
         return connectToMySQL('dojos_and_ninjas_schema').query_db(query,data)

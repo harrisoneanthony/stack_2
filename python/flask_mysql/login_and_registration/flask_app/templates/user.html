@@ -2,6 +2,13 @@
 {% block content %}
 <body>
     <h1>Hello, {{session['first_name']}}</h1>
+    <div class="user_card border border-info col-4 p-2">
+        <p>Full Name: {{user_in_db.first_name}} {{user_in_db.last_name}}</p>
+        <p>Email: {{user_in_db.email}}</p>
+        <p>Date of birth: {{user_in_db.dob}}</p>
+        <p>Created on: {{user_in_db.created_at}}</p>
+        <p>Last updated on: {{user_in_db.updated_at}}</p>
+    </div>
     <form action="/logout">
         <button class="bg-warning-subtle" type="submit">Logout</button>
     </form>

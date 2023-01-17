@@ -3,7 +3,8 @@ from flask import flash
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
-db = 'login_and_registration'
+db = 'recipes'
+
 class User:
     def __init__(self, data):
         self.id = data['id']
@@ -13,7 +14,6 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.dob = data['dob']
 
     @staticmethod
     def validate_user(user):
@@ -40,7 +40,7 @@ class User:
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email, password, dob) VALUES ( %(first_name)s, %(last_name)s, %(email)s, %(password)s, %(dob)s )"
+        query = "INSERT INTO users (first_name, last_name, email, password) VALUES ( %(first_name)s, %(last_name)s, %(email)s, %(password)s )"
         return connectToMySQL(db).query_db(query,data)
 
     @classmethod
@@ -57,3 +57,5 @@ class User:
         query = "SELECT * FROM users WHERE id = %(id)s;"
         results = connectToMySQL(db).query_db(query, data)
         return cls(results[0])
+
+    

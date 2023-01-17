@@ -1,7 +1,7 @@
 from flask import render_template,redirect,request,session
 from flask import flash
 from flask_app import app
-from flask_app.models.login_and_registration_models import User
+from flask_app.models.users_models import User
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -22,7 +22,6 @@ def register():
         "first_name": request.form['first_name'],
         "last_name": request.form['last_name'],
         "email": request.form['email'],
-        "dob": request.form['dob'],
         "password": pw_hash
     }
     # Call the save @classmethod on User
@@ -30,11 +29,6 @@ def register():
     # store user id into session
     session['user_id'] = user_id
     return redirect('/')
-
-@app.route('/user')
-def user():
-    user_in_db = User.get_one({'id':session['user_id']})
-    return render_template('user.html', user_in_db=user_in_db)
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -53,7 +47,12 @@ def login():
     session['user_id'] = user_in_db.id
     session['first_name'] = user_in_db.first_name
     # never renter on a post!
-    return redirect('/user')
+    return redirect('/recipes')
+
+@app.route('/recipes')
+def user():
+    user_in_db = User.get_one({'id':session['user_id']})
+    return render_template('recipes.html', user_in_db=user_in_db)
 
 @app.route('/logout')
 def logout():
