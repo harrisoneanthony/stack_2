@@ -2,6 +2,7 @@ from flask import render_template,redirect,request,session
 from flask import flash
 from flask_app import app
 from flask_app.models.users_models import User
+from flask_app.models.recipes_models import Recipe
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -44,18 +45,26 @@ def login():
         flash("Invalid Email/Password", 'login')
         return redirect('/')
     # if the passwrods matched, we set the user_id into session
-    session['user_id'] = user_in_db.id
+    session['users_id'] = user_in_db.id
     session['first_name'] = user_in_db.first_name
     # never renter on a post!
     return redirect('/recipes')
 
 @app.route('/recipes')
 def user():
-    user_in_db = User.get_one({'id':session['user_id']})
-    return render_template('recipes.html', user_in_db=user_in_db)
+    if 'users_id' not in session:
+        return redirect('/')
+    user_in_db = User.get_one({'id':session['users_id']})
+    return render_template('recipes.html', user_in_db=user_in_db, all_recipes = Recipe.get_all_recipes())
 
 @app.route('/logout')
 def logout():
-    session['user_id'] = ''
+    session['users_id'] = ''
     session['first_name'] = ''
     return redirect('/')
+
+@app.route('/recipe/new')
+def new():
+    if 'users_id' not in session:
+        return redirect('/')
+    return render_template('new.html')
