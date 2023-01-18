@@ -2,8 +2,13 @@
 {% block content %}
 <body>
     <div class="d-flex justify-content-between">
-        <h1>Recipe for {{recipe.name}}</h1>
-        <a href="/recipes">Home</a>
+        <div>
+            <h1 class="page_title">Recipe for {{recipe.name}}</h1>
+        </div>
+        <div>
+            <a href="/recipes">back to recipes</a>
+            <a href="/logout">logout</a>
+        </div>
     </div>
     <div class="user_card border border-info col-4 p-2">
         <p>Description: {{recipe.description}}</p>
