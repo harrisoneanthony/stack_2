@@ -29,9 +29,6 @@ class Recipe:
         if len(recipe['instructions']) < 2:
             flash("Instructions must be at least 2 characters.", "instructions")
             is_valid = False
-        if len(recipe['under_30']) == 0:
-            flash("Under 30 must not be left blank.", "under_30")
-            is_valid = False
         return is_valid
 
     @classmethod
