@@ -8,16 +8,20 @@ from flask_app.controllers import users_controllers
 def create_recipe():
     if 'user_id' not in session:
         return redirect('/')
+    if 'under_30' not in request.form.keys():
+        unchecked = 'unchecked'
+    else:
+        unchecked = request.form['under_30']
     data = {
         'name': request.form['name'],
         'description': request.form['description'],
         'instructions': request.form['instructions'],
         'date_made': request.form['date_made'],
-        'under_30': request.form['under_30'],
+        'under_30': unchecked,
         'users_id': session['users_id']
     }
     if not Recipe.validate_recipe(data):
-        return redirect('/recipes/new')
+        return redirect('/recipe/new')
     Recipe.add_recipe(data)
     return redirect('/recipes')
 

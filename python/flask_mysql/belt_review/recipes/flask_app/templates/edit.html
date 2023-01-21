@@ -31,11 +31,17 @@
                 <input type="date" name="date_made" class="form-control" value="{{recipe.date_made}}">
             </div>
             <div class="form_group">
-                <label for="under_30">Under 30 minutes</label>
+                <!-- <label for="under_30">Under 30 minutes</label>
                 <select name="under_30" value="{{recipe.under_30}}">
                     <option>Yes</option>
                     <option>No</option>
+                </select> -->
+                <label>Under 30 minutes?</label>
+                <input type="radio" name="under_30" value="yes">
+                <label for="yes">Yes</label>
                 </select>
+                <input type="radio" name="under_30" value="no">
+                <label for="no">No</label>
             </div>
             <input type="submit" value="update">
         </form>

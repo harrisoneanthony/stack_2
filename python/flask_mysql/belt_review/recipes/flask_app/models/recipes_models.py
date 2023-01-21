@@ -29,6 +29,13 @@ class Recipe:
         if len(recipe['instructions']) < 2:
             flash("Instructions must be at least 2 characters.", "instructions")
             is_valid = False
+        # count = 0
+        # for keys in recipe.keys():
+        #     count+=1
+        # if count < 5:
+        if recipe['under_30'] == 'unchecked':
+            flash("Cook time must be selected")
+            is_valid = False
         return is_valid
 
     @classmethod
@@ -62,11 +69,20 @@ class Recipe:
         query = "DELETE FROM recipes WHERE id = %(id)s;"
         return connectToMySQL(db).query_db(query, data)
 
+    # @classmethod
+    # def get_one_recipe(cls, data):
+    #     query = "SELECT * FROM recipes WHERE id = %(id)s;"
+    #     results = connectToMySQL(db).query_db(query, data)
+    #     return cls(results[0])
+    
     @classmethod
     def get_one_recipe(cls, data):
-        query = "SELECT * FROM recipes WHERE id = %(id)s;"
+        query = "SELECT * FROM recipes JOIN users ON users.id = recipes.users_id WHERE recipes.id = %(id)s;"
         results = connectToMySQL(db).query_db(query, data)
-        return cls(results[0])
+        print(results)
+        recipe = cls(results[0])
+        recipe.posted_by = results[0]['first_name']
+        return recipe
 
     @classmethod
     def update(cls,data):
