@@ -19,6 +19,11 @@
         <div class='container bg-light rounded align-items-center'>
             <h1>GitHub APIs</h1>
         <input type="text" oninput="getUsername(this)" name="username">
+            <label for="">Include profile pic?</label>
+            <input type="radio" name="profile_pic" value="yes" oninput="select_info(this)">
+            <label for="yes">Yes</label>
+            <input type="radio" name="profile_pic" value="no" oninput="select_info(this)">
+            <label for="no">No</label>
         <button onclick="search()">Go!</button>
 
         <div id="cards">
