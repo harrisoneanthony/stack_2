@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <h1>Welcome, {{user_in_db.first_name}} </h1>
+    <div class="sub-header">
+        <div>
+            <h3 class="page_title">Paintings</h3>
+        </div>
+        <div>
+            <form  action="/logout">
+                <button class="action_button bg-warning" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <th>Title</th>
+            <th>Painter</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            {% for painting in all_paintings %}
+            <tr>
+                <td><a href="/view/{{painting.id}}">{{painting.title}}</a></td>
+                <td>{{painting.painter.first_name}} {{painting.painter.last_name}}</td>
+                    {% if session['user_id'] == painting.painter.id %}
+                        <td><a href="/edit/{{painting.id}}"> Edit </a><a href="/delete/{{painting.id}}"> | Delete </a></td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="sub-header">
+        <div>
+            <h3 class="page_title">Your purchased Paintings</h3>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <th>Title</th>
+            <th>Painter</th>
+        </thead>
+        <tbody>
+            {% for purchase in all_purchases %}
+                <tr>
+                    <td><a href="/view/{{purchase.id}}"> {{purchase.title}} </a></td>
+                    <td>{{purchase.painter.first_name}} {{purchase.painter.last_name}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="/new">
+        <button class="action_button bg-info-subtle"type="submit">Add painting</button>
+    </form>
+</body>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<body>
+    <div class="sub-header d-flex justify-content-between">
+        <div class="dashboard">
+            <form action="/new">
+                <button class="action_button bg-info-subtle"type="submit">Add painting</button>
+            </form>
+        </div>
+        <div class="dashboard">
+            <form  action="/paintings">
+                <button class="action_button bg-primary" type="submit">Dashboard</button>
+            </form>
+        </div>
+        <div>
+            <form  action="/logout">
+                <button class="action_button bg-warning" type="submit">Logout</button>
+            </form>
+        </div>
+    </div>
+    <div class="user_card border border-info col-4 p-2">
+        <h1>{{painting.title}}</h1>
+        <h5>Painted by {{painting.painter.first_name}} {{painting.painter.last_name}}</h5>
+        <h5>Description: {{painting.description}}</h5>
+        <h5>Price: ${{painting.price}}</h5>
+        <h5>Quantity: {{painting.quantity}}</h5>
+        <h5>Number Purchased: {{number_sold}} </h5>
+        {% if (( session['user_id'] != painting.user_id )) and (( painting.quantity > number_sold )) %}
+            <form  action="/purchase" method="POST">
+                <input type="hidden" name="user_id" value="{{session[user_id]}}">
+                <input type="hidden" name="painting_id" value="{{painting.id}}">
+                <button class="action_button bg-success" type="submit">Buy</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}
