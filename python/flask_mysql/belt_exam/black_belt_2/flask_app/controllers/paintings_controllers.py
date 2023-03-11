@@ -22,8 +22,8 @@ def add_painting():
 
 @app.route('/delete/<int:id>')
 def delete(id):
-    if 'users_id' not in session:
-        return redirect('/')
+    # if 'users_id' not in session:
+    #     return redirect('/')
     data = {
         'id': id
     }
